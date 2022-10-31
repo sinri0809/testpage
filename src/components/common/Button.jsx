@@ -1,7 +1,9 @@
-const Button = ({label="default", className=""}) => {
-  return <button className={`btn ${className}`}>
-    {label}
-  </button>
+const Button = ({ label = "default", className = "", link = "" }) => {
+  return <div className="btn__wrap">
+    <button className={`btn ${className}`}>
+      {label}
+    </button>
+  </div>
 };
 
 export default Button;
