@@ -5,14 +5,15 @@ import Loading from "components/layout/Loading";
 
 const PageHome = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const loadingTime = 2000;
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 1000);
+  }, loadingTime);
 
   return <div className="home">
     <Header />
-    {isLoading && <Loading />}
+    {isLoading && <Loading loadingTime={loadingTime} />}
     home
   </div>
 }

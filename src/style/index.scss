@@ -10,6 +10,9 @@
 // components
 @import './components/layout/header';
 
+// layout
+@import './layout/loading';
+
 // pages
 @import './pages/home';
 @import './pages/setlanguage';
@@ -30,6 +33,7 @@
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  overflow-x: hidden;
   background-color: pink;
 
   *::selection {
@@ -39,6 +43,6 @@
 }
 
 .view {
-  position: relative;
-  height: 100%;
+  // position: relative;
+  height: calc(100% - 50px);
 }
