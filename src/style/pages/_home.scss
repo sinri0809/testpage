@@ -1,5 +1,27 @@
 .home {
-  // cursor: cell;
   width: 100%;
-  height: 100%;
+}
+
+.set-guide {
+  padding: 0 20px;
+
+  .image-icon-guide {
+    display: block;
+    width: 75px;
+    height: 75px;
+    background-image: url('../../assets/image/image_poup.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .guide-text {
+    text-align: center;
+    line-height: 1.4em;
+  }
+
+  .popup-tool {
+    .btn-look-guide {
+      background-color: $purple2;
+    }
+  }
 }

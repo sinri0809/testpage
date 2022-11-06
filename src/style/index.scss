@@ -8,7 +8,7 @@
 @import './theme/theme';
 
 // components
-
+@import './components/popup';
 // layout
 @import './layout/loading';
 @import './layout/header';
@@ -43,6 +43,7 @@
 }
 
 .view {
+  height: 100%;
   // position: relative;
-  height: calc(100% - 50px);
+  // height: calc(100% - 50px);
 }

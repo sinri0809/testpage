@@ -2,19 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "components/layout/Header"
+import Popup from "components/Popup";
 
 const PageSetLanguage = () => {
-  return <div className="view page-set-language">
-    <Header />
-    <div className="page-content">
-      <Popup />
-    </div>
-  </div>
-}
-
-export default PageSetLanguage;
-
-const Popup = () => {
   const navigate = useNavigate();
   const [language, setLanguage] = useState("KO");
   const LanguageSampleMap = {
@@ -24,16 +14,16 @@ const Popup = () => {
   };
 
   const naviagteToPage = () => {
-    console.log("go home")
     navigate("/home", { replace: false })
   }
 
   // todo: check cookie
   // todo: set cookie
 
-  return <div className="popup-container set-language">
-    <div className="popup-wrap">
-      <div className="popup-content">
+  return <div className="view page-set-language">
+    <Header />
+    <Popup className="set-language">
+      <Popup.Content>
         <div className="selected-language">
           <p>{LanguageSampleMap[language]}</p>
         </div>
@@ -68,8 +58,8 @@ const Popup = () => {
             </li>
           </ul>
         </div>
-      </div>
-      <div className="btn-wrap">
+      </Popup.Content>
+      <Popup.Tool>
         <button
           className="btn btn-close"
           onClick={() => naviagteToPage()}
@@ -78,7 +68,9 @@ const Popup = () => {
           className="btn btn-check"
           onClick={() => naviagteToPage()}
         >확인</button>
-      </div>
-    </div>
+      </Popup.Tool>
+    </Popup>
   </div>
 }
+
+export default PageSetLanguage;
