@@ -1,7 +1,10 @@
-const Button = ({ label = "default", className = "", link = "" }) => {
-  return <div className="btn__wrap">
+const Button = ({ children, label = "default", className = "", link = "" }) => {
+  return <div className="btn-wrap">
     <button className={`btn ${className}`}>
-      {label}
+      {children
+        ? children
+        : label
+      }
     </button>
   </div>
 };

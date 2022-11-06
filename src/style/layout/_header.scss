@@ -8,24 +8,24 @@
   align-items: center;
   background-color: $white;
 
-  .btn__wrap {
-    background-color: $pink10;
+  .btn-wrap {
     height: max-content;
 
     .btn-go-home {
       width: 84px;
-      height: 25px;
-    }
-
-    .btn-search,
-    .btn-app-drawer {
-      width: 24px;
-      height: 24px;
+      $margin: 6px; // matching authentic layout
+      height: calc(25px + $margin);
+      margin-top: $margin;
     }
   }
 
-  .btn-tools__wrap {
+  .btn-tools-wrap {
     display: flex;
     column-gap: 12px;
+
+    .btn {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
