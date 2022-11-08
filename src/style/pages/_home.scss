@@ -16,12 +16,90 @@
 
   .guide-text {
     text-align: center;
-    line-height: 1.4em;
+    line-height: 1.8em;
+
+    strong {
+      color: $purple;
+      font-size: 1.6rem;
+    }
   }
 
   .popup-tool {
     .btn-look-guide {
       background-color: $purple2;
     }
+  }
+}
+
+// after click close
+.set-guide.shut-down {
+
+  $animation_duration: 0.8s;
+
+  @keyframes getting-smaller {
+    from {
+      width: 70%;
+      height: 70%;
+    }
+
+    to {
+      width: 50px;
+      height: 50px;
+      padding: 0;
+    }
+  }
+
+  &.popup-container {
+    bottom: 20px;
+    right: 20px;
+    @include animation(getting-smaller, $animation_duration);
+
+    &::after {
+      display: none;
+    }
+  }
+
+  @keyframes getting-smaller-wrap {
+    from {
+      width: 50%;
+      height: 50%;
+    }
+
+    50% {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding: 0;
+    }
+
+    to {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      padding: 0;
+    }
+  }
+
+  .popup-wrap {
+    @include animation(getting-smaller-wrap, $animation_duration);
+  }
+
+  .popup-content {
+    padding: 0;
+    height: 100%;
+    justify-content: center;
+
+    .image-icon-guide {
+      width: 35px;
+      height: 35px;
+    }
+
+    .guide-text {
+      display: none;
+    }
+  }
+
+  .popup-tool {
+    display: none;
   }
 }
