@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "components/layout/Header";
-import Loading from "components/layout/Loading";
+// import Loading from "components/layout/Loading";
 import Popup from "components/Popup";
 
 const PageHome = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isPopup, setIsPopup] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [isPopup, setIsPopup] = useState(false);
   const [popupShutDown, setPopupshutDown] = useState(false);
   const navigate = useNavigate();
-  const loadingTime = 2000;
+  // const loadingTime = 2000;
 
-  setTimeout(() => {
-    setIsLoading(false);
-    // setIsPopup(true);
-  }, loadingTime);
+  // setTimeout(() => {
+  //   setIsLoading(false);
+  // }, loadingTime);
 
   const navigateToPage = (link) => {
     navigate(link);
@@ -33,9 +32,41 @@ const PageHome = () => {
   return <div className="view home">
     <Header />
     {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
-    <div className="page-content">
-      home
-    </div>
+    <main className="page-content">
+      <div className="recommend-category">
+        <ul className="recommend-category-list">
+
+        </ul>
+        <button>more</button>
+      </div>
+
+      <section className="banner-slide">
+
+      </section>
+
+      <section className="contents-container">
+        <div className="contents-wrap">
+          <div
+            className="category focus" // based on scroll  
+          >
+            <h3>latest</h3>
+            <button>more</button>
+          </div>
+          <div className="contents-list-wrap">
+            <ul className="contents-list">
+              <li>
+                <button>
+                  <div className="video-banner"></div>
+                  <h4>video title</h4>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
 
     <Popup className={popupShutDown ? "set-guide shut-down" : "set-guide"}>
       <Popup.Content>
@@ -51,7 +82,7 @@ const PageHome = () => {
       <Popup.Tool>
         <button
           className="btn btn-look-guide"
-          onClick={() => navigateToPage("guide")}
+          onClick={() => navigateToPage("/guide")}
         >
           가이드 보기
         </button>

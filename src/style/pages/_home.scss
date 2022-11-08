@@ -1,7 +1,4 @@
-.home {
-  width: 100%;
-}
-
+// * home popup layout + animation
 .set-guide {
   padding: 0 20px;
 
@@ -31,7 +28,7 @@
   }
 }
 
-// after click close
+// * shut-down animation
 .set-guide.shut-down {
 
   $animation_duration: 0.8s;
@@ -101,5 +98,37 @@
 
   .popup-tool {
     display: none;
+  }
+}
+
+// home
+.home {
+  position: relative;
+  width: 100%;
+
+  .page-content {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+  }
+
+  .recommend-category {
+    height: 40px;
+    background-color: blue;
+  }
+
+  .banner-slide {
+    height: 165px;
+    background-color: black;
+  }
+
+  .contents-container {
+
+    background-color: gray;
+
+    .category {
+      height: 40px;
+      background-color: red;
+    }
   }
 }
