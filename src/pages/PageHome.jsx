@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "components/layout/Header";
+import BannerSlider from "components/BannerSlider";
 // import Loading from "components/layout/Loading";
 import Popup from "components/Popup";
 
@@ -22,28 +23,55 @@ const PageHome = () => {
 
   const onClickCloseBtn = () => {
     setPopupshutDown(!popupShutDown)
-  }
+  };
+
   const onClickIcon = () => {
     if (popupShutDown) {
       setPopupshutDown(!popupShutDown)
     }
-  }
+  };
+
+  const arrContentsCategories = [
+    "latest", "#1", '#2'
+  ];
+
+  const onClickMoreBtn = () => (e) => {
+    e.stopPropagation();
+    const domCategory = document.querySelector('.recommend-category-wrap');
+    const isOpen = domCategory.classList.contains("open");
+
+    if (isOpen) {
+      domCategory.classList.remove("open")
+    } else {
+      domCategory.classList.add("open")
+    }
+  };
 
   return <div className="view home">
     <Header />
     {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
     <main className="page-content">
       <div className="recommend-category">
-        <ul className="recommend-category-list">
-
-        </ul>
-        <button>more</button>
+        <div className="recommend-category-wrap">
+          <ul className="recommend-category-list">
+            {
+              arrContentsCategories.map((item, index) => {
+                return <li key={index}
+                  className={"item-category"}
+                >
+                  <button className="btn">{item}</button>
+                </li>
+              })
+            }
+          </ul>
+          <div className="btn-wrap">
+            <button className="btn btn-more"
+              onClick={onClickMoreBtn()}
+            >more</button>
+          </div>
+        </div>
       </div>
-
-      <section className="banner-slide">
-
-      </section>
-
+      <BannerSlider />
       <section className="contents-container">
         <div className="contents-wrap">
           <div
@@ -64,8 +92,26 @@ const PageHome = () => {
           </div>
         </div>
       </section>
-
-
+      <section className="contents-container">
+        <div className="contents-wrap">
+          <div
+            className="category focus" // based on scroll  
+          >
+            <h3>latest</h3>
+            <button>more</button>
+          </div>
+          <div className="contents-list-wrap">
+            <ul className="contents-list">
+              <li>
+                <button>
+                  <div className="video-banner"></div>
+                  <h4>video title</h4>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
 
     <Popup className={popupShutDown ? "set-guide shut-down" : "set-guide"}>
