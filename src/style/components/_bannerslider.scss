@@ -6,58 +6,69 @@
     position: relative;
     width: 100%;
     height: 165px;
-
-    display: flex;
-
   }
 
-  .slider-pagination {
-    position: absolute;
-    bottom: 0;
+  .banner-slider-list {
+    display: flex;
     width: 100%;
-    background-color: blue;
-    padding: 10px 26px;
+    height: 100%;
+    transition: transform 0.2s;
 
-    .slider-pagination-wrap {
-      position: relative;
+    // transform: translateX(-100%);
+
+    .banner-item {
+      min-width: 100%;
     }
+  }
+}
 
-    .tool-now {
-      height: 5px;
+
+.slider-pagination {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba($color: gray, $alpha: 0.5);
+  padding: 10px 26px;
+
+  .slider-pagination-wrap {
+    position: relative;
+  }
+
+  .tool-now {
+    height: 5px;
+    position: absolute;
+    border-radius: 2px;
+    background-color: $white;
+
+    transition-property: left;
+    transition-duration: 0.2s;
+    pointer-events: none;
+  }
+
+  .pagination-list {
+    &::before {
       position: absolute;
+      content: '';
+      width: 100%;
+      height: 5px;
+      background-color: rgba($white, 0.2);
       border-radius: 2px;
-      background-color: $white;
-
-      transition-property: left;
-      transition-duration: 0.2s;
       pointer-events: none;
     }
 
-    .pagination-list {
-      &::before {
-        position: absolute;
-        content: '';
-        width: 100%;
-        height: 5px;
-        background-color: rgba($white, 0.2);
-        border-radius: 2px;
-        pointer-events: none;
-      }
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
 
-      position: relative;
-      display: flex;
+    .pagination-item {
       width: 100%;
-      align-items: center;
+      height: 120%;
 
-      .pagination-item {
+      .tool {
+        height: 20px;
         width: 100%;
-        height: 120%;
-
-        .tool {
-          height: 20px;
-          width: 100%;
-          background-color: rgba($color: red, $alpha: 0.5);
-        }
+        background-color: rgba($color: red, $alpha: 0.5);
       }
     }
   }
