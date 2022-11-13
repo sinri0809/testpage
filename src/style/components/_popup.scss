@@ -1,5 +1,5 @@
 .popup-container {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 100%;
@@ -29,6 +29,7 @@
   width: 100%;
   background-color: $white;
   border-radius: 20px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 
   @keyframes slide-up {
