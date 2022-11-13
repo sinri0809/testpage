@@ -106,6 +106,14 @@
   position: relative;
   width: 100%;
 
+  // common
+  .category-text {
+    align-self: center;
+    font-size: 16px;
+    user-select: none;
+  }
+
+  // layout
   .page-content {
     position: absolute;
     top: 50px;
@@ -122,7 +130,6 @@
       justify-content: space-between;
       height: 40px;
       overflow: hidden;
-      z-index: 9;
 
       &.open {
         overflow: visible;
@@ -136,8 +143,9 @@
       width: 100%;
       height: max-content;
       background-color: $purple;
+      z-index: 9;
 
-      .item-category {
+      .category-item {
         padding: 0 15px;
 
         .btn {
@@ -155,11 +163,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 9;
 
       .btn {
         width: 24px;
         height: 24px;
-        background-color: white;
       }
     }
   }
@@ -170,11 +178,61 @@
 
   .contents-container {
 
-    background-color: gray;
-
-    .category {
+    .category-item {
+      padding: 0 15px;
       height: 40px;
-      background-color: red;
+      background-color: $purple;
+      display: flex;
+      justify-content: space-between;
+
+      .category-text {
+        font-weight: bold;
+      }
     }
   }
+
+  .contents-list-wrap {
+    position: relative;
+    padding: 2rem 2.8rem;
+
+    .contents-list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      width: 100%;
+
+      .content-item {
+        width: 100%;
+
+        .btn-content {
+          flex-direction: column;
+          row-gap: 1rem;
+          background-color: gainsboro;
+          margin-bottom: 6px;
+        }
+
+        .video-wrap {
+          min-width: 320px;
+          min-height: 170px;
+          border-radius: 5px;
+          overflow: hidden;
+          display: flex;
+
+          .video-content {
+            background-color: black;
+            width: 100%;
+          }
+        }
+
+        .video-title {
+          @include multiline-text-ellipsis(2);
+
+          width: 100%;
+          max-height: 4rem;
+          text-align: left;
+        }
+      }
+    }
+  }
+
 }

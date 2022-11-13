@@ -1,6 +1,4 @@
-@import './../modules';
-
-.btn{
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -8,11 +6,15 @@
   text-decoration: none;
 }
 
-.btn-primary{
+.btn-primary {
   width: 100px;
   height: 30px;
   border-radius: 30px;
 
   color: $gray1;
   background-color: $black1;
+}
+
+.btn-dropdown {
+  background-image: url('../../assets/icon/icon_dropdown.svg');
 }

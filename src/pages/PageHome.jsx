@@ -57,61 +57,50 @@ const PageHome = () => {
             {
               arrContentsCategories.map((item, index) => {
                 return <li key={index}
-                  className={"item-category"}
+                  className={"category-item"}
                 >
-                  <button className="btn">{item}</button>
+                  <button className="btn category-text">{item}</button>
                 </li>
               })
             }
           </ul>
           <div className="btn-wrap">
-            <button className="btn btn-more"
+            <button className="btn btn-dropdown"
               onClick={onClickMoreBtn()}
-            >more</button>
+            ></button>
           </div>
         </div>
       </div>
       <BannerSlider />
-      <section className="contents-container">
-        <div className="contents-wrap">
-          <div
-            className="category focus" // based on scroll  
-          >
-            <h3>latest</h3>
-            <button>more</button>
-          </div>
-          <div className="contents-list-wrap">
-            <ul className="contents-list">
-              <li>
-                <button>
-                  <div className="video-banner"></div>
-                  <h4>video title</h4>
-                </button>
-              </li>
-            </ul>
-          </div>
+      <ContentsContainer>
+        <div className="category-item focus">
+          <h3 className="category-text">latest</h3>
+          <button className="btn">{"더보기"}</button>
         </div>
-      </section>
-      <section className="contents-container">
-        <div className="contents-wrap">
-          <div
-            className="category focus" // based on scroll  
-          >
-            <h3>latest</h3>
-            <button>more</button>
-          </div>
-          <div className="contents-list-wrap">
-            <ul className="contents-list">
-              <li>
-                <button>
-                  <div className="video-banner"></div>
-                  <h4>video title</h4>
-                </button>
-              </li>
-            </ul>
-          </div>
+
+        <div className="contents-list-wrap">
+          <ul className="contents-list">
+
+            <li className="content-item">
+              <button className="btn btn-content">
+                <div className="video-wrap">
+                  <video className="video-content" src=""></video>
+                </div>
+                <h4 className="video-title">video title</h4>
+              </button>
+            </li>
+            <li className="content-item">
+              <button className="btn btn-content">
+                <div className="video-wrap">
+                  <video className="video-content" src=""></video>
+                </div>
+                <h4 className="video-title">video title 2videovideo title 2videovideo title 2videovideo title 2video title 2video title 2video title 2video title 2video title 2video title 2video title 2</h4>
+              </button>
+            </li>
+
+          </ul>
         </div>
-      </section>
+      </ContentsContainer>
     </main>
 
     <Popup className={popupShutDown ? "set-guide shut-down" : "set-guide"}>
@@ -144,3 +133,11 @@ const PageHome = () => {
 }
 
 export default PageHome;
+
+const ContentsContainer = ({ children }) => {
+  return <section className="contents-container">
+    <div className="contents-wrap">
+      {children}
+    </div>
+  </section>
+}
