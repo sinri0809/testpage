@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+import banner1 from 'assets/temp/image_banner_temp_01.png';
+import banner2 from 'assets/temp/image_banner_temp_02.png';
+import banner3 from 'assets/temp/image_banner_temp_03.png';
+
 const BannerSlider = () => {
   const [index, setIndex] = useState(0);
   const arrLength = 3;
@@ -9,13 +13,19 @@ const BannerSlider = () => {
   return <section className="banner-slider">
     <BannerWrap index={index}>
       <li className="banner-item">
-        <button>test image area</button>
+        <button className="btn-link-banner">
+          <img className="image-banner" src={banner1} alt="banner-01" />
+        </button>
       </li>
       <li className="banner-item">
-        <button>test image area2</button>
+        <button className="btn-link-banner">
+          <img className="image-banner" src={banner2} alt="banner-02" />
+        </button>
       </li>
       <li className="banner-item">
-        <button>test image area3</button>
+        <button className="btn-link-banner">
+          <img className="image-banner" src={banner3} alt="banner-03" />
+        </button>
       </li>
     </BannerWrap>
 

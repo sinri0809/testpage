@@ -5,7 +5,7 @@
   .banner-slider-wrap {
     position: relative;
     width: 100%;
-    height: 165px;
+    height: max-content;
   }
 
   .banner-slider-list {
@@ -14,10 +14,19 @@
     height: 100%;
     transition: transform 0.2s;
 
-    // transform: translateX(-100%);
-
     .banner-item {
       min-width: 100%;
+
+      .btn-link-banner {
+        width: 100%;
+        display: block;
+
+        .image-banner {
+          display: block;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
     }
   }
 }
@@ -27,8 +36,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: rgba($color: gray, $alpha: 0.5);
-  padding: 10px 26px;
+  padding: 5px 26px;
 
   .slider-pagination-wrap {
     position: relative;
@@ -66,9 +74,9 @@
       height: 120%;
 
       .tool {
+        cursor: pointer;
         height: 20px;
         width: 100%;
-        background-color: rgba($color: red, $alpha: 0.5);
       }
     }
   }
