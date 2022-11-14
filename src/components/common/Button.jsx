@@ -1,6 +1,11 @@
-const Button = ({ children, label = "default", className = "", link = "" }) => {
+const Button = ({ children, label = "default", className = "", link = "", onClick }) => {
+
   return <div className="btn-wrap">
-    <button className={`btn ${className}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`btn ${className}`}
+    >
       {children
         ? children
         : label

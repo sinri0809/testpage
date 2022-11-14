@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import Sidebar from "components/Sidebar";
 import Button from "components/common/Button";
 import logo from 'assets/logo/logo_text.svg'
 
 const Header = ({ children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const onClickAppDrawer = () => (e) => {
+    setIsSidebarOpen(true);
+  };
+
   return <header className="header">
     <div className="header-wrap">
       <div className="btn-wrap">
@@ -11,9 +18,14 @@ const Header = ({ children }) => {
       </div>
       <div className="btn-tools-wrap">
         <Button label="search" className="btn-search"><IconSearch /></Button>
-        <Button label="sidebar" className="btn-app-drawer"><IconSideBar /></Button>
+        <div className="btn-wrap">
+          <button type="button" className="btn btn-app-drawer" onClick={onClickAppDrawer()}>
+            <IconSideBar />
+          </button>
+        </div>
       </div>
     </div>
+    <Sidebar open={isSidebarOpen} setOpen={setIsSidebarOpen} />
     {children}
   </header>
 };
@@ -42,5 +54,4 @@ const IconSideBar = () => {
     <rect x="9" y="11" width="11" height="3" fill="#555555" />
     <rect x="4" y="18" width="16" height="3" fill="#555555" />
   </svg>
-
 }
