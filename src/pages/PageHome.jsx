@@ -1,3 +1,11 @@
+/**
+ * todo list
+ * 1. observer로 category fix 
+ * 2. loading logic + routing order
+ * 3. search page layout
+ * 4. more button
+ * 5. video component detail page
+ */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
