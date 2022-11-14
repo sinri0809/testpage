@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "components/layout/Header";
+import Footer from "components/layout/Footer";
 import BannerSlider from "components/BannerSlider";
 // import Loading from "components/layout/Loading";
 import Popup from "components/Popup";
@@ -32,7 +33,7 @@ const PageHome = () => {
   };
 
   const arrContentsCategories = [
-    "latest", "#1", '#2'
+    "😻latest", "🍕hottest", '⏰someone special'
   ];
 
   const onClickMoreBtn = () => (e) => {
@@ -48,9 +49,7 @@ const PageHome = () => {
   };
 
   return <div className="view home">
-    <Header />
-    {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
-    <main className="page-content">
+    <Header>
       <div className="recommend-category">
         <div className="recommend-category-wrap">
           <ul className="recommend-category-list">
@@ -71,16 +70,27 @@ const PageHome = () => {
           </div>
         </div>
       </div>
+    </Header>
+    {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
+    <main className="page-content">
       <BannerSlider />
+
       <ContentsContainer>
         <div className="category-item focus">
-          <h3 className="category-text">latest</h3>
-          <button className="btn">{"더보기"}</button>
+          <h3 className="category-text">{arrContentsCategories[0]}</h3>
         </div>
 
         <div className="contents-list-wrap">
           <ul className="contents-list">
 
+            <li className="content-item">
+              <button className="btn btn-content">
+                <div className="video-wrap">
+                  <video className="video-content" src=""></video>
+                </div>
+                <h4 className="video-title">video title</h4>
+              </button>
+            </li>
             <li className="content-item">
               <button className="btn btn-content">
                 <div className="video-wrap">
@@ -100,8 +110,40 @@ const PageHome = () => {
 
           </ul>
         </div>
+
+        <div className="btn-wrap">
+          <button className="btn"> more</button>
+        </div>
+      </ContentsContainer>
+      <ContentsContainer>
+        <div className="category-item focus">
+          <h3 className="category-text">{arrContentsCategories[1]}</h3>
+        </div>
+
+        <div className="contents-list-wrap">
+          <ul className="contents-list">
+            <li className="content-item">
+              <button className="btn btn-content">
+                <div className="video-wrap">
+                  <video className="video-content" src=""></video>
+                </div>
+                <h4 className="video-title">video title</h4>
+              </button>
+            </li>
+            <li className="content-item">
+              <button className="btn btn-content">
+                <div className="video-wrap">
+                  <video className="video-content" src=""></video>
+                </div>
+                <h4 className="video-title">video title 2videovideo title 2videovideo title 2videovideo title 2video title 2video title 2video title 2video title 2video title 2video title 2video title 2</h4>
+              </button>
+            </li>
+          </ul>
+        </div>
       </ContentsContainer>
     </main>
+
+    <Footer />
 
     <Popup className={popupShutDown ? "set-guide shut-down" : "set-guide"}>
       <Popup.Content>

@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import Button from "components/common/Button";
 import logo from 'assets/logo/logo_text.svg'
 
-const Header = () => {
+const Header = ({ children }) => {
   return <header className="header">
-    <div className="btn-wrap">
-      <Link to={'/home'} className="btn btn-go-home"><IconHome /></Link>
+    <div className="header-wrap">
+      <div className="btn-wrap">
+        <Link to={'/home'} className="btn btn-go-home"><IconHome /></Link>
+      </div>
+      <div className="btn-tools-wrap">
+        <Button label="search" className="btn-search"><IconSearch /></Button>
+        <Button label="sidebar" className="btn-app-drawer"><IconSideBar /></Button>
+      </div>
     </div>
-    <div className="btn-tools-wrap">
-      <Button label="search" className="btn-search"><IconSearch /></Button>
-      <Button label="sidebar" className="btn-app-drawer"><IconSideBar /></Button>
-    </div>
+    {children}
   </header>
 };
 
