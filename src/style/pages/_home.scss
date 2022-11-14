@@ -48,7 +48,7 @@
 
   &.popup-container {
     bottom: 20px;
-    right: 20px;
+    right: 12px;
     @include animation(getting-smaller, $animation_duration);
 
     &::after {

@@ -5,7 +5,7 @@
 
   width: 100%;
   height: 100vh;
-  z-index: $level_4;
+  z-index: $level_5;
 
   .sidebar-shadow {
     display: block;
@@ -47,9 +47,10 @@
 
     .sidebar-bottom {
       overflow: scroll;
-      height: calc(100% - $top_area);
+
+      height: calc(100% - $top_area - 100px);
       padding-top: 10px;
-      padding-bottom: 100px;
+      // padding-bottom: 100px;
       margin-left: 14px;
       margin-right: 10px;
       border-radius: 5px;
