@@ -1,4 +1,12 @@
-import React, { useState } from "react";
+/**
+ * todo list
+ * 1. observer로 category fix 
+ * 2. loading logic + routing order
+ * 3. search page layout
+ * 4. more button
+ * 5. video component detail page
+ */
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "components/layout/Header";
@@ -48,7 +56,43 @@ const PageHome = () => {
     }
   };
 
+  useEffect(() => {
+    const headerHeight = 90;
+
+    const options = {
+      root: null,
+      rootMargin: `-${headerHeight}px 0px 0px 0px`,
+      threshold: [0.5, 0.6, 0.9]
+    };
+
+    const callback = (entries, observe) => {
+      const [entry] = entries;
+      const top = entry.intersectionRect.top;
+
+      if (entry.isIntersecting && top >= 90 && top <= 150) {
+        // console.log(entry.intersectionRect.top)
+        console.log(entry.target)
+        // console.log(entry.target.getAttribute("data-index"))
+      }
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    const categoryList = document.querySelectorAll(".category-item");
+    categoryList.forEach((target) => {
+      observer.observe(target)
+    })
+
+    return () => {
+      categoryList.forEach((target) => {
+        observer.unobserve(target)
+      })
+    }
+  }, [])
+
+
   return <div className="view home">
+    {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
     <Header>
       <div className="recommend-category">
         <div className="recommend-category-wrap">
@@ -71,15 +115,12 @@ const PageHome = () => {
         </div>
       </div>
     </Header>
-    {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
-    <main className="page-content">
+    <main id="scrollArea" className="page-content">
       <BannerSlider />
-
-      <ContentsContainer>
+      <ContentsContainer index={0}>
         <div className="category-item focus">
           <h3 className="category-text">{arrContentsCategories[0]}</h3>
         </div>
-
         <div className="contents-list-wrap">
           <ul className="contents-list">
 
@@ -110,16 +151,11 @@ const PageHome = () => {
 
           </ul>
         </div>
-
-        <div className="btn-wrap">
-          <button className="btn"> more</button>
-        </div>
       </ContentsContainer>
-      <ContentsContainer>
-        <div className="category-item focus">
+      <ContentsContainer index={1}>
+        <div className="category-item">
           <h3 className="category-text">{arrContentsCategories[1]}</h3>
         </div>
-
         <div className="contents-list-wrap">
           <ul className="contents-list">
             <li className="content-item">
@@ -176,10 +212,13 @@ const PageHome = () => {
 
 export default PageHome;
 
-const ContentsContainer = ({ children }) => {
-  return <section className="contents-container">
+const ContentsContainer = ({ children, index }) => {
+  return <section id={`contentContainer${index}`} className="contents-container" data-index={index}>
     <div className="contents-wrap">
       {children}
+      <div className="btn-wrap">
+        <button className="btn"> more</button>
+      </div>
     </div>
   </section>
 }
