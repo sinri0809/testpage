@@ -5,10 +5,10 @@ const Sidebar = ({ user = null, open, setOpen }) => {
   const isLogin = true;
 
   const onClickClose = () => {
-    setOpen(false)
+    setOpen(false);
   };
 
-  return <nav className={open ? "sidebar-container open" : "sidebar-container close"}>
+  return <nav className={open ? "sidebar-container open" : "sidebar-container"}>
     <SidebarShadow onClickClose={onClickClose} />
     <div className="sidebar">
       <SidebarTop onClickClose={onClickClose} />
