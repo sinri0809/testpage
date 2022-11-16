@@ -14,7 +14,7 @@ const PageSetLanguage = () => {
   };
 
   const naviagteToPage = () => {
-    navigate("/home", { replace: false })
+    navigate("/loading_to_home", { replace: false })
   }
 
   // todo: check cookie

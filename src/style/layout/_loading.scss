@@ -1,6 +1,6 @@
 .loading {
   position: absolute;
-  top: 50px;
+  top: 0px;
   width: 100%;
 
   display: flex;
@@ -17,8 +17,9 @@
     max-width: 300px;
 
     .progressing-icon {
+      font-style: normal;
       font-size: 2rem;
-
+      font-weight: 900;
       $translateY: 2.5px;
 
       @keyframes doki {
@@ -45,6 +46,9 @@
     .progressing-text {
       color: $white;
       font-size: 1.6rem;
+      text-align: center;
+      line-height: 1.4;
+      word-break: keep-all;
     }
 
     .progressing-bar-wrap {
