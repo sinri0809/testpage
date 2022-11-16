@@ -1,0 +1,25 @@
+@mixin keyframe ($animation_name) {
+  @keyframes #{$animation_name} {
+    @content;
+  }
+}
+
+@keyframes open {
+  from {
+    right: -100%;
+  }
+
+  to {
+    right: 0;
+  }
+}
+
+@keyframes close {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -100%;
+  }
+}

@@ -23,6 +23,11 @@
       $margin: 6px; // matching authentic layout
       height: calc(25px + $margin);
       margin-top: $margin;
+
+    }
+
+    &:active {
+      background-color: gainsboro;
     }
   }
 
@@ -33,6 +38,10 @@
     .btn {
       width: 24px;
       height: 24px;
+
+      &:active {
+        background-color: gainsboro;
+      }
     }
   }
 }

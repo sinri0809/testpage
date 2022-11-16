@@ -1,13 +1,15 @@
+import { IconClose, IconNew } from "./icon/Icons";
+
 const Sidebar = ({ user = null, open, setOpen }) => {
   // const isLogin = user !== null;
   const isLogin = true;
 
   const onClickClose = () => {
     setOpen(false)
-  }
+  };
+
   return <nav className={open ? "sidebar-container open" : "sidebar-container close"}>
     <SidebarShadow onClickClose={onClickClose} />
-
     <div className="sidebar">
       <SidebarTop onClickClose={onClickClose} />
       <SdiebarBottom>
@@ -39,7 +41,11 @@ const Sidebar = ({ user = null, open, setOpen }) => {
 
         <div className="sidebar-notice">
           <ul className="notice-btn-list">
-            <li className="notice-item"><button className="btn">공지사항</button></li>
+            <li className="notice-item">
+              <button className="btn">
+                <IconNew />공지사항
+              </button>
+            </li>
             <li className="notice-item"><button className="btn">이벤트</button></li>
           </ul>
         </div>
@@ -77,7 +83,7 @@ const SidebarTop = ({ onClickClose }) => {
     <button
       className="btn btn-close"
       onClick={onClickClose}
-    >close</button>
+    ><IconClose /></button>
   </div>
 }
 
