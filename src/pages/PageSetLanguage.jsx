@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "components/layout/Header"
 import Popup from "components/Popup";
 
 const PageSetLanguage = () => {
@@ -21,7 +20,6 @@ const PageSetLanguage = () => {
   // todo: set cookie
 
   return <div className="view page-set-language">
-    <Header />
     <Popup className="set-language">
       <Popup.Content>
         <div className="selected-language">

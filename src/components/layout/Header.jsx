@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Sidebar from "components/Sidebar";
-import Button from "components/common/Button";
 import logo from 'assets/logo/logo_text.svg'
 
 const Header = ({ children }) => {
@@ -11,13 +10,24 @@ const Header = ({ children }) => {
     setIsSidebarOpen(true);
   };
 
+  const onClickSearchDrawer = () => {
+    console.log("clicked")
+  }
+
   return <header className="header">
     <div className="header-wrap">
       <div className="btn-wrap">
         <Link to={'/home'} className="btn btn-go-home"><IconHome /></Link>
       </div>
       <div className="btn-tools-wrap">
-        <Button label="search" className="btn-search"><IconSearch /></Button>
+        <div className="btn-wrap">
+          <button className="btn"
+            onClick={onClickSearchDrawer}
+          >
+            <IconSearch />
+          </button>
+        </div>
+        {/* <Link to={'/search'} className="btn btn-search"><IconSearch /></Link> */}
         <div className="btn-wrap">
           <button type="button" className="btn btn-app-drawer" onClick={onClickAppDrawer()}>
             <IconSideBar />
