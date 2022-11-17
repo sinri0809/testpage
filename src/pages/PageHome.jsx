@@ -1,7 +1,6 @@
 /**
  * todo list
- * 1. observer로 category fix 
- * 2. loading logic + routing order
+ * 1. observer로 category fix -> interaction 
  * 3. search page layout
  * 4. more button
  * 5. video component detail page
@@ -11,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 import BannerSlider from "components/BannerSlider";
 import VideoItem from "components/common/VideoContainer";
-// import Loading from "components/layout/Loading";
 import Popup from "components/Popup";
 
 import Header from "components/layout/Header";
@@ -22,16 +20,9 @@ const contentsCategories = [
 ];
 
 const PageHome = () => {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [isPopup, setIsPopup] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [popupShutDown, setPopupshutDown] = useState(false);
   const navigate = useNavigate();
-  // const loadingTime = 2000;
-
-  // setTimeout(() => {
-  //   setIsLoading(false);
-  // }, loadingTime);
 
   const navigateToPage = (link) => {
     navigate(link);
@@ -46,8 +37,6 @@ const PageHome = () => {
       setPopupshutDown(!popupShutDown)
     }
   };
-
-  
 
   const onClickMoreBtn = () => (e) => {
     e.stopPropagation();
@@ -98,7 +87,6 @@ const PageHome = () => {
 
 
   return <div className="view home">
-    {/* {isLoading && <Loading loadingTime={loadingTime} />} */}
     <Header>
       <div className="recommend-category">
         <div className="recommend-category-wrap">
