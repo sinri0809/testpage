@@ -12,11 +12,13 @@
 @import './components/popup';
 @import './components/bannerslider';
 @import './components/sidebar';
+@import './components/video';
 
 // layout
 @import './layout/loading';
 @import './layout/header';
 @import './layout/footer';
+@import './layout/contents';
 
 // pages
 @import './pages/home';

@@ -9,15 +9,22 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "components/layout/Header";
-import Footer from "components/layout/Footer";
 import BannerSlider from "components/BannerSlider";
+import VideoItem from "components/common/VideoContainer";
 // import Loading from "components/layout/Loading";
 import Popup from "components/Popup";
+
+import Header from "components/layout/Header";
+import Footer from "components/layout/Footer";
+
+const contentsCategories = [
+  "😻latest", "🍕hottest", '⏰someone special'
+];
 
 const PageHome = () => {
   // const [isLoading, setIsLoading] = useState(true);
   // const [isPopup, setIsPopup] = useState(false);
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const [popupShutDown, setPopupshutDown] = useState(false);
   const navigate = useNavigate();
   // const loadingTime = 2000;
@@ -40,9 +47,7 @@ const PageHome = () => {
     }
   };
 
-  const arrContentsCategories = [
-    "😻latest", "🍕hottest", '⏰someone special'
-  ];
+  
 
   const onClickMoreBtn = () => (e) => {
     e.stopPropagation();
@@ -70,15 +75,16 @@ const PageHome = () => {
       const top = entry.intersectionRect.top;
 
       if (entry.isIntersecting && top >= 90 && top <= 150) {
-        // console.log(entry.intersectionRect.top)
-        console.log(entry.target)
-        // console.log(entry.target.getAttribute("data-index"))
+        const focusedIndex = Number(entry.target.getAttribute("data-index"));
+        setCategoryIndex(focusedIndex);
+        // if(focusedIndex !== categoryIndex){
+        // }
       }
     };
 
     const observer = new IntersectionObserver(callback, options);
 
-    const categoryList = document.querySelectorAll(".category-item");
+    const categoryList = document.querySelectorAll(".category-index");
     categoryList.forEach((target) => {
       observer.observe(target)
     })
@@ -97,8 +103,13 @@ const PageHome = () => {
       <div className="recommend-category">
         <div className="recommend-category-wrap">
           <ul className="recommend-category-list">
+            <li className="category-item focus">
+              <button className="btn category-text">
+                {contentsCategories[categoryIndex]}
+              </button>
+            </li>
             {
-              arrContentsCategories.map((item, index) => {
+              contentsCategories.map((item, index) => {
                 return <li key={index}
                   className={"category-item"}
                 >
@@ -115,72 +126,38 @@ const PageHome = () => {
         </div>
       </div>
     </Header>
+
     <main id="scrollArea" className="page-content">
       <BannerSlider />
       <ContentsContainer index={0}>
-        <div className="category-item focus">
-          <h3 className="category-text">{arrContentsCategories[0]}</h3>
-        </div>
         <div className="contents-list-wrap">
           <ul className="contents-list">
-
             <li className="content-item">
-              <button className="btn btn-content">
-                <div className="video-wrap">
-                  <video className="video-content" src=""></video>
-                </div>
-                <h4 className="video-title">video title</h4>
-              </button>
+              <VideoItem />
             </li>
             <li className="content-item">
-              <button className="btn btn-content">
-                <div className="video-wrap">
-                  <video className="video-content" src=""></video>
-                </div>
-                <h4 className="video-title">video title</h4>
-              </button>
+              <VideoItem />
             </li>
             <li className="content-item">
-              <button className="btn btn-content">
-                <div className="video-wrap">
-                  <video className="video-content" src=""></video>
-                </div>
-                <h4 className="video-title">video title 2videovideo title 2videovideo title 2videovideo title 2video title 2video title 2video title 2video title 2video title 2video title 2video title 2</h4>
-              </button>
+              <VideoItem />
             </li>
-
           </ul>
         </div>
       </ContentsContainer>
       <ContentsContainer index={1}>
-        <div className="category-item">
-          <h3 className="category-text">{arrContentsCategories[1]}</h3>
-        </div>
         <div className="contents-list-wrap">
           <ul className="contents-list">
             <li className="content-item">
-              <button className="btn btn-content">
-                <div className="video-wrap">
-                  <video className="video-content" src=""></video>
-                </div>
-                <h4 className="video-title">video title</h4>
-              </button>
+              <VideoItem />
             </li>
             <li className="content-item">
-              <button className="btn btn-content">
-                <div className="video-wrap">
-                  <video className="video-content" src=""></video>
-                </div>
-                <h4 className="video-title">video title 2videovideo title 2videovideo title 2videovideo title 2video title 2video title 2video title 2video title 2video title 2video title 2video title 2</h4>
-              </button>
+              <VideoItem />
             </li>
           </ul>
         </div>
       </ContentsContainer>
     </main>
-
     <Footer />
-
     <Popup className={popupShutDown ? "set-guide shut-down" : "set-guide"}>
       <Popup.Content>
         <i
@@ -213,8 +190,17 @@ const PageHome = () => {
 export default PageHome;
 
 const ContentsContainer = ({ children, index }) => {
-  return <section id={`contentContainer${index}`} className="contents-container" data-index={index}>
+  return <section 
+    id={`contentContainer${index}`} 
+    className="contents-container" 
+  >
     <div className="contents-wrap">
+      <div 
+        className="category-item category-index focus"
+        data-index={index}
+      >
+        <h3 className="category-text">{contentsCategories[index]}</h3>
+      </div>
       {children}
       <div className="btn-wrap">
         <button className="btn"> more</button>

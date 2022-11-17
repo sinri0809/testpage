@@ -1,107 +1,3 @@
-// * home popup layout + animation
-.set-guide {
-  padding: 0 20px;
-
-  .image-icon-guide {
-    display: block;
-    width: 75px;
-    height: 75px;
-    background-image: url('../../assets/image/image_poup.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  .guide-text {
-    text-align: center;
-    line-height: 1.8em;
-
-    strong {
-      color: $purple;
-      font-size: 1.6rem;
-    }
-  }
-
-  .popup-tool {
-    .btn-look-guide {
-      background-color: $purple2;
-    }
-  }
-}
-
-// * shut-down animation
-.set-guide.shut-down {
-
-  $animation_duration: 0.8s;
-
-  @keyframes getting-smaller {
-    from {
-      width: 30%;
-      height: 30%;
-    }
-
-    to {
-      width: 50px;
-      height: 50px;
-      padding: 0;
-    }
-  }
-
-  &.popup-container {
-    bottom: 20px;
-    right: 12px;
-    @include animation(getting-smaller, $animation_duration);
-
-    &::after {
-      display: none;
-    }
-  }
-
-  @keyframes getting-smaller-wrap {
-    from {
-      width: 50%;
-      height: 50%;
-    }
-
-    80% {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      padding: 0;
-    }
-
-    to {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      padding: 0;
-    }
-  }
-
-  .popup-wrap {
-    @include animation(getting-smaller-wrap, $animation_duration);
-  }
-
-  .popup-content {
-    padding: 0;
-    height: 100%;
-    justify-content: center;
-
-    .image-icon-guide {
-      width: 35px;
-      height: 35px;
-    }
-
-    .guide-text {
-      display: none;
-    }
-  }
-
-  .popup-tool {
-    display: none;
-  }
-}
-
-// home
 .home {
   position: absolute;
   width: 100%;
@@ -141,17 +37,30 @@
       flex-direction: column;
       width: 100%;
       height: max-content;
-      background-color: $purple2;
+      background-color: $white;
+      // background-color: $purple2;
       z-index: 9;
 
       .category-item {
         padding: 0 15px;
+        border-top: 1px solid $purple2;
 
         .btn {
           width: 100%;
           height: 40px;
           justify-content: flex-start;
         }
+      }
+      .focus{
+        @keyframes fade-in {
+          from{
+            background-color: $white;
+          }to{
+            background-color: $purple2;
+          }
+        }
+
+        @include animation(fade-in, 0.2s);
       }
     }
 
@@ -199,39 +108,7 @@
 
       .content-item {
         width: 100%;
-
-        .btn-content {
-          width: 100%;
-          flex-direction: column;
-          row-gap: 1rem;
-        }
-
-        .video-wrap {
-          width: 100%;
-          min-width: 320px;
-          min-height: 170px;
-          border-radius: 5px;
-          overflow: hidden;
-          display: flex;
-
-          .video-content {
-            background-color: black;
-            width: 100%;
-          }
-        }
-
-        .video-title {
-          @include multiline-text-ellipsis(2);
-
-          width: 100%;
-          max-height: 4rem;
-          font-size: 1.6rem;
-          line-height: 1.4;
-          text-align: left;
-          // background-color: gainsboro;
-        }
       }
     }
   }
-
 }
