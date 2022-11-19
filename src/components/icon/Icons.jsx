@@ -23,8 +23,15 @@ const IconSearch = () => {
   </svg>
 }
 
+const IconArrowPrev = () => {
+  return <svg className="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fillRule="evenodd" clipRule="evenodd" d="M8.62137 13.5L14.0607 18.9393L11.9394 21.0606L2.80566 11.9269L12.0123 3.87109L13.9878 6.12882L8.99222 10.5H21V13.5H8.62137Z" fill="#555555" />
+  </svg>
+}
+
 export {
   IconClose,
   IconNew,
-  IconSearch
+  IconSearch,
+  IconArrowPrev
 };

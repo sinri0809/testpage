@@ -5,7 +5,11 @@ const uxInputPlaceholder = [
   "hot issue"
 ];
 
+const contentsCategories = [
+  "😻latest", "🍕hottest", '⏰someone special'
+];
 
 export {
-  uxInputPlaceholder
+  uxInputPlaceholder,
+  contentsCategories
 };

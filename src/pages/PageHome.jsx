@@ -4,6 +4,7 @@
  * 3. search page layout
  * 4. more button
  * 5. video component detail page
+ *  6. skeleton
  */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +18,7 @@ import Footer from "components/layout/Footer";
 
 import SearchFrom from "components/layout/SearchForm";
 
-const contentsCategories = [
-  "😻latest", "🍕hottest", '⏰someone special'
-];
+import { contentsCategories as category } from "tools/constants";
 
 const PageHome = () => {
   const [categoryIndex, setCategoryIndex] = useState(0);
@@ -96,11 +95,11 @@ const PageHome = () => {
             <ul className="recommend-category-list">
               <li className="category-item focus">
                 <button className="btn category-text">
-                  {contentsCategories[categoryIndex]}
+                  {category[categoryIndex]}
                 </button>
               </li>
               {
-                contentsCategories.map((item, index) => {
+                category.map((item, index) => {
                   return <li key={index}
                     className={"category-item"}
                   >
@@ -177,22 +176,22 @@ const PageHome = () => {
       </Popup>
     </div>
     <SearchFrom />
-  </> 
+  </>
 }
 
 export default PageHome;
 
 const ContentsContainer = ({ children, index }) => {
-  return <section 
-    id={`contentContainer${index}`} 
-    className="contents-container" 
+  return <section
+    id={`contentContainer${index}`}
+    className="contents-container"
   >
     <div className="contents-wrap">
-      <div 
+      <div
         className="category-item category-index focus"
         data-index={index}
       >
-        <h3 className="category-text">{contentsCategories[index]}</h3>
+        <h3 className="category-text">{category[index]}</h3>
       </div>
       {children}
       <div className="btn-wrap">
