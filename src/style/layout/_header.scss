@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   z-index: $level_3;
-  width: 100%;
+  width: 100vw;
 
   .header-wrap {
     width: 100%;
@@ -23,11 +23,6 @@
       $margin: 6px; // matching authentic layout
       height: calc(25px + $margin);
       margin-top: $margin;
-
-    }
-
-    &:active {
-      background-color: gainsboro;
     }
   }
 
@@ -39,9 +34,6 @@
       width: 24px;
       height: 24px;
 
-      &:active {
-        background-color: gainsboro;
-      }
     }
   }
 }

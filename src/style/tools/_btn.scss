@@ -1,9 +1,17 @@
-.btn {
+@mixin btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
+
+  &:active {
+    background-color: gainsboro;
+  }
+}
+
+.btn {
+  @include btn;
 }
 
 .btn-primary {
