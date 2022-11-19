@@ -97,6 +97,35 @@
         font-weight: bold;
       }
     }
+
+    .btn-more-wrap {
+      .btn-more {
+        @include btn;
+        flex-direction: column;
+        height: 120px;
+        margin-bottom: 38px;
+        row-gap: 8px;
+
+        padding: 0 3rem;
+        background-color: rgba($color: #BEBEBE, $alpha: 0.2);
+      }
+
+      .more-text {
+        font-size: 14px;
+        width: 100%;
+        text-align: left;
+        line-height: 1.4em;
+      }
+
+      .more-title {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+        justify-content: space-between;
+        font-weight: 900;
+      }
+    }
   }
 
   .contents-list-wrap {

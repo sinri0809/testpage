@@ -1,7 +1,7 @@
 .btn-video-item {
+  @include btn;
   width: 100%;
   flex-direction: column;
-  row-gap: 1rem;
 }
 
 .video-wrap {
@@ -11,6 +11,7 @@
   border-radius: 5px;
   overflow: hidden;
   display: flex;
+  margin-bottom: 1rem;
 
   .video-content {
     background-color: black;
@@ -27,4 +28,13 @@
   line-height: 1.4;
   text-align: left;
   // background-color: gainsboro;
+  margin-bottom: 4px;
+}
+
+.video-date {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  color: $darkgray;
+  font-size: 12px;
 }

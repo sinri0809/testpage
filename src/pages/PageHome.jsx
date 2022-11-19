@@ -1,9 +1,15 @@
 /**
  * todo list
+ * 4. more button, lazy load?
+ * 5. video component detail layout (touch event)
+ *  - heart animation
+ *  - skeleton
+ * 
  * 1. observer로 category fix -> interaction 
- * 4. more button
- * 5. video component detail page
- *  6. skeleton
+ * 7. search result page
+ * 8. banner auto scroll 
+ * 
+ * + font - noto
  */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +23,7 @@ import Footer from "components/layout/Footer";
 
 import SearchFrom from "components/layout/SearchForm";
 
+import { IconMore } from "components/icon/Icons";
 import { contentsCategories as category } from "tools/constants";
 
 const PageHome = () => {
@@ -193,8 +200,14 @@ const ContentsContainer = ({ children, index }) => {
         <h3 className="category-text">{category[index]}</h3>
       </div>
       {children}
-      <div className="btn-wrap">
-        <button className="btn"> more</button>
+      <div className="btn-more-wrap">
+        <button className="btn-more">
+          <span className="more-text">{"전 세계를 열광시킬 모두의 시상식! 다시 음악을 만나는 날, 당신의 아티스트를 확인하세요."}</span>
+          <strong className="more-title">
+            {"더 둘러보기"}
+            <IconMore />
+          </strong>
+        </button>
       </div>
     </div>
   </section>
