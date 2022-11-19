@@ -51,11 +51,14 @@
           justify-content: flex-start;
         }
       }
-      .focus{
+
+      .focus {
         @keyframes fade-in {
-          from{
+          from {
             background-color: $white;
-          }to{
+          }
+
+          to {
             background-color: $purple2;
           }
         }
