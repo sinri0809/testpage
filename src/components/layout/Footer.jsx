@@ -1,7 +1,7 @@
 const Footer = () => {
   return <footer className="footer-container">
     <div className="footer-wrap">
-      <ul class="policy-list">
+      <ul className="policy-list">
         <li>이용약관</li>
         <li>개인정보처리방침</li>
       </ul>
@@ -15,9 +15,9 @@ const Footer = () => {
           <li>문의 <button className="btn">idolplus.help@gmail.com</button></li>
         </ul>
       </address>
-      <p class="copyright">Copyright &copy; LG Uplus Corp. All Rights Reserved.</p>
+      <p className="copyright">Copyright &copy; LG Uplus Corp. All Rights Reserved.</p>
     </div>
-  </footer>
+  </footer >
 }
 
 export default Footer;
