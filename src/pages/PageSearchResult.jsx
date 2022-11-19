@@ -8,7 +8,9 @@ const PageSearchResult = () => {
   const result = searchParams.get("input");
 
   return <section className="view search-result">
-    <FormInput setSearchParams={setSearchParams} />
+    <div className="search-result-top">
+      <FormInput setSearchParams={setSearchParams} />
+    </div>
     {result && <>
       this is search result
     </>}

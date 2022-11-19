@@ -1,0 +1,48 @@
+.form-container {
+  border: 3px solid $darkgray;
+
+  .form-wrap {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    padding: 8px 13px 8px 9px;
+  }
+}
+
+.input-container {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 4px;
+}
+
+.input-wrap {
+  flex: 1 1 auto;
+
+  .input {
+    width: 100%;
+    color: rgba($darkgray, $alpha: 1.0);
+
+    &::placeholder {
+      color: rgba($darkgray, $alpha: 0.7);
+    }
+  }
+}
+
+.btn-close-wrap {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.btn-search-wrap {
+  margin-left: 1rem;
+}

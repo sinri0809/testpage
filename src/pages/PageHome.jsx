@@ -1,7 +1,6 @@
 /**
  * todo list
  * 1. observer로 category fix -> interaction 
- * 3. search page layout
  * 4. more button
  * 5. video component detail page
  *  6. skeleton

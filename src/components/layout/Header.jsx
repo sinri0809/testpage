@@ -13,7 +13,8 @@ const Header = ({ children }) => {
   };
 
   const onClickSearchDrawer = () => {
-    console.log("clicked")
+    const searchPage = document.querySelector(".search-form");
+    searchPage.style.right = "0";
   }
 
   return <header className="header">
