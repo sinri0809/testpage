@@ -1,25 +1,43 @@
+import { useState } from "react";
+
 const VideoItem = ({ isView = false }) => {
-  const className = isView ? "view-video" : "btn-video-item";
+  const [isFloating, setIsFloating] = useState(false);
+
+  const makeClassName = () => {
+    const isViewState = isView ? "view-video" : "btn-video-item";
+    const isFloatingState = isFloating ? "float" : "";
+    return `${isViewState} ${isFloatingState}`
+  }
 
   return <button
-    className={className}
-    onTouchStart={() => console.log("on touch start")}
+    className={makeClassName()}
+  // onTouchStart={() => console.log("on touch start")}
   >
-    {isView && <VideoViewDragTool />}
-    <div className="video-wrap">
-      <video className="video-content" src=""></video>
-      <span className="video-total-time">{"10:11"}</span>
+    <div className="view-video-wrap">
+      {isView && <VideoViewDragTool isFloating={isFloating} setIsFloating={setIsFloating} />}
+      <div className="video-wrap">
+        <video className="video-content" src=""></video>
+        <span className="video-total-time">{"10:11"}</span>
+      </div>
+      <h4 className="video-title">video title</h4>
+      <span className="video-date">2022.00.00</span>
+      {isView && <VideoItemInformation />}
     </div>
-    <h4 className="video-title">video title</h4>
-    <span className="video-date">2022.00.00</span>
-    {isView && <VideoItemInformation />}
   </button>
 }
 
 export default VideoItem;
 
-const VideoViewDragTool = () => {
-  return <button className="drag-tool-touch"></button>
+const VideoViewDragTool = ({ isFloating, setIsFloating }) => {
+  return <button
+    className="drag-tool-touch"
+    onClick={(e) => {
+      e.stopPropagation();
+      setIsFloating(!isFloating);
+    }}
+  >
+    <span className="tool-bar"></span>
+  </button>
 }
 
 const VideoItemInformation = () => {

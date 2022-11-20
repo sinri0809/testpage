@@ -15,7 +15,7 @@
   margin-bottom: 1rem;
 
   .video-content {
-    background-color: rgba($purple, 0.4);
+    background-color: gainsboro;
     width: 100%;
   }
 
@@ -49,75 +49,93 @@
 }
 
 // when click video button
+$float_interaction: 0.3s;
+
 .view-video {
   position: fixed;
   left: 0;
+  bottom: 0;
   width: 100%;
-
-  top: 100px;
-  height: calc(100vh - 100px);
-
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  padding: 0 28px;
   z-index: $level_3;
-  border-radius: 24px 24px 0 0;
 
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
+  .view-video-wrap {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0 28px;
+    border-radius: 24px 24px 0 0;
+
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
+
+    transition-property: all;
+    transition-duration: $float_interaction;
+  }
 
   .drag-tool-touch {
-    margin-top: 8px;
-    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    height: 24px;
+    cursor: pointer;
+    // cursor: row-resize;
+    transition: all $float_interaction;
 
-    display: inline-block;
-    width: 141px;
-    height: 3px;
-    border-radius: 3px;
-    background-color: $purple;
-  }
-}
+    .tool-bar {
+      display: inline-block;
+      width: 141px;
+      height: 3px;
 
-.video-main {
-  @at-root .btn-video-item {
-    display: none;
-  }
-
-  @at-root .view-video {
-    display: block;
+      transition-property: width;
+      transition-duration: $float_interaction;
+      background-color: $purple;
+      border-radius: 3px;
+    }
   }
 }
 
 .video-main {
   width: 100%;
 
-  .video-main-wrap {
+  .video-information {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .video-information {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .information-comment {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .user-tool {
+    display: flex;
+    column-gap: 8px;
+
+    button {
+      @include btn;
+      width: 30px;
+      height: 30px;
+      background-color: gainsboro;
     }
+  }
 
-    .information-comment {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .user-tool {
-      display: flex;
-      column-gap: 8px;
-
-      button {
-        @include btn;
-        width: 30px;
-        height: 30px;
-        background-color: gainsboro;
-      }
-    }
+  .video-comment-list {
+    min-height: 10px;
+    margin: 30px 0;
+    // background-color: gainsboro;
   }
 }
 
@@ -149,11 +167,40 @@
 
 // when floating
 .view-video.float {
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 15px 15px 0px 0px;
+
+  .view-video-wrap {
+    width: 347px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 15px 15px 0px 0px;
+  }
 
   .drag-tool-touch {
-    width: 71px;
+    height: 15px;
+    padding-bottom: 4px;
+
+    .tool-bar {
+      width: 71px;
+    }
+  }
+
+  .video-wrap {
+    min-width: 290px;
+
+    .video-total-time {
+      display: none;
+    }
+  }
+
+  .video-title {
+    display: none;
+  }
+
+  .video-date {
+    display: none;
+  }
+
+  .video-main {
+    display: none;
   }
 }
