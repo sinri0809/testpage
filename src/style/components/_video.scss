@@ -51,7 +51,18 @@
 // when click video button
 $float_interaction: 0.3s;
 
+@keyframes slide-up-video-view {
+  from {
+    transform: translateY(50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 .view-video {
+  @include animation(slide-up-video-view, 0.4s);
   position: fixed;
   left: 0;
   bottom: 0;
@@ -166,7 +177,18 @@ $float_interaction: 0.3s;
 }
 
 // when floating
+@keyframes slide-down-video-view {
+  from {
+    transform: translateY(-50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 .view-video.float {
+  @include animation(slide-up-video-view, 0.2s);
 
   .view-video-wrap {
     width: 347px;

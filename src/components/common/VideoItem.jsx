@@ -1,35 +1,63 @@
 import { useState } from "react";
 
-const VideoItem = ({ isView = false }) => {
+const VideoItem = () => {
   const [isFloating, setIsFloating] = useState(false);
   const [isViewVideo, setIsViewVideo] = useState(false);
+  const [touchstart, setTouchStart] = useState(0);
+  const [floatingY, setFloatingY] = useState(0);
+
+  const onTouchStart = () => (e: Event) => {
+    if (isFloating) {
+      // console.log(e.touches[0].pageY)
+      setTouchStart(e.touches[0].pageY)
+    }
+  }
+
+  const onTouchMove = () => (e) => {
+    if (isFloating) {
+      const movingY = e.touches[0].pageY;
+      setFloatingY(movingY - touchstart)
+      if (movingY - touchstart > 50) {
+        setIsViewVideo(false)
+        setIsFloating(false)
+      }
+    }
+  };
 
   const makeClassName = () => {
     const isFloatingState = isFloating ? "float" : "";
     return `view-video ${isFloatingState}`
   };
 
-  return <> <div className={"btn-video-item"}
-    onClick={() => {
-      setIsViewVideo(true)
-    }}
-  >
-    <div className="view-video-wrap">
-      <div className="video-wrap">
-        <video className="video-content" src=""></video>
-        <span className="video-total-time">{"10:11"}</span>
+  return <>
+    <div className={"btn-video-item"}
+      onClick={() => {
+        setFloatingY(0)
+        setIsViewVideo(true)
+      }}
+    >
+      <div className="view-video-wrap">
+        <div className="video-wrap">
+          <video className="video-content" src=""></video>
+          <span className="video-total-time">{"10:11"}</span>
+        </div>
+        <h4 className="video-title">video title</h4>
+        <span className="video-date">2022.00.00</span>
       </div>
-      <h4 className="video-title">video title</h4>
-      <span className="video-date">2022.00.00</span>
     </div>
-  </div>
     {isViewVideo && <>
-      <div className={makeClassName()}>
+      <div className={makeClassName()}
+        style={{
+          bottom: `-${floatingY}px`
+        }}
+      >
         <div className="view-video-wrap">
           <VideoViewDragTool
             isFloating={isFloating}
             setIsFloating={setIsFloating}
             setIsViewVideo={setIsViewVideo}
+            onTouchMove={onTouchMove}
+            onTouchStart={onTouchStart}
           />
           <div className="video-wrap">
             <video className="video-content" src=""></video>
@@ -46,29 +74,12 @@ const VideoItem = ({ isView = false }) => {
 
 export default VideoItem;
 
-const VideoViewDragTool = ({ isFloating, setIsFloating, setIsViewVideo }) => {
-  const [touchstart, setTouchStart] = useState(0);
-
-  const onTouchStart = () => (e: Event) => {
-    if (isFloating) {
-      // console.log(e.touches[0].pageY)
-      setTouchStart(e.touches[0].pageY)
-    }
-  }
-
-  const onTouchMove = () => (e) => {
-    if (isFloating) {
-      // console.log(e.touches[0].pageY)
-      const movingY = e.touches[0].pageY;
-      if (movingY - touchstart > 50) {
-        setIsViewVideo(false)
-        setIsFloating(false)
-      }
-    }
-  };
-
-  const onTouchEnd = () => (e) => {
-  };
+const VideoViewDragTool = ({
+  isFloating,
+  setIsFloating,
+  onTouchStart,
+  onTouchMove
+}) => {
 
   return <button
     className="drag-tool-touch"
@@ -78,7 +89,7 @@ const VideoViewDragTool = ({ isFloating, setIsFloating, setIsViewVideo }) => {
     }}
     onTouchStart={onTouchStart()}
     onTouchMove={onTouchMove()}
-    onTouchEnd={onTouchEnd()}
+  // onTouchEnd={onTouchEnd()}
   >
     <span className="tool-bar"></span>
   </button>

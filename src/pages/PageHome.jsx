@@ -132,7 +132,7 @@ const PageHome = () => {
                 <VideoItem />
               </li>
               <li className="content-item">
-                <VideoItem isView={true} />
+                <VideoItem />
               </li>
             </ul>
           </div>
