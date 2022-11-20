@@ -1,12 +1,11 @@
 /**
  * todo list
- *  - skeleton
  * 
  * 1. observer로 category fix -> interaction (change condition)
  * 7. search result page
- * 8. banner auto scroll 
  * 
  * video logic 고도화 
+ *  - skeleton
  */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

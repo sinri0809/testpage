@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import banner1 from 'assets/temp/image_banner_temp_01.png';
 import banner2 from 'assets/temp/image_banner_temp_02.png';
@@ -9,6 +9,22 @@ const BannerSlider = () => {
   const arrLength = 3;
 
   const toolWidth = 100 / arrLength;
+
+  useEffect(() => {
+    const infiniteAddIndex = () => {
+      if (index === arrLength - 1) {
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }
+
+    let handleAutoBannerSlide = setInterval(infiniteAddIndex, 2000);
+
+    return () => {
+      clearInterval(handleAutoBannerSlide)
+    }
+  }, [index])
 
   return <section className="banner-slider">
     <BannerWrap index={index}>
