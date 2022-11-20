@@ -1,9 +1,5 @@
 /**
- * todo list
- * 
  * 1. observer로 category fix -> interaction (change condition)
- * 7. search result page
- * 
  * video logic 고도화 
  *  - skeleton
  */

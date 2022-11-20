@@ -1,12 +1,12 @@
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { IconClose, IconSearch } from "components/icon/Icons";
 import { uxInputPlaceholder as placeholder, randomIndex as index } from "tools/constants";
 
-const FormInput = () => {
+const FormInput = ({ result = "" }) => {
   const navigate = useNavigate();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(result);
   let [isPending, startTransition] = useTransition();
 
   const onChange = (e) => {
@@ -26,6 +26,7 @@ const FormInput = () => {
     })
   };
 
+
   return <div className="form-container">
     <form
       onSubmit={handleSubmit}
@@ -33,7 +34,7 @@ const FormInput = () => {
     >
       <div className="input-container">
         <InputWrap value={value} onChange={onChange} />
-        <ButtonClose onClick={onClickClose} />
+        {value && <ButtonClose onClick={onClickClose} />}
       </div>
       <ButtonSubmit />
     </form>
@@ -43,15 +44,28 @@ const FormInput = () => {
 export default FormInput;
 
 const InputWrap = ({ value, onChange }) => {
+
+  const onInvalid = () => (e) => {
+    e.preventDefault();
+    makeClass(true);
+  };
+
+  const makeClass = (invalid = false) => {
+    const invalidClass = invalid ? "invalid" : ""
+    return `input ${invalidClass}`;
+  }
+
   return <div className="input-wrap">
     <input
-      className="input"
+      className={makeClass()}
       type="text"
       value={value}
       // onKeyDown={(e) => onKeyDown(e)}
       onChange={(e) => onChange(e)}
       autoFocus={true}
       placeholder={placeholder[index]}
+      required={true}
+      onInvalid={onInvalid()}
     />
   </div>
 }
