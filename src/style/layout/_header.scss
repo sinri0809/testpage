@@ -2,8 +2,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: $level_3;
   width: 100vw;
+
+  z-index: $level_3;
 
   .header-wrap {
     width: 100%;
@@ -12,6 +13,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    border-bottom: 1px solid $purple2;
     background-color: $white;
   }
 

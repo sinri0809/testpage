@@ -1,34 +1,32 @@
 /**
  * todo list
- * 4. more button, lazy load?
  * 5. video component detail layout (touch event)
  *  - heart animation
  *  - skeleton
  * 
- * 1. observer로 category fix -> interaction 
+ * 1. observer로 category fix -> interaction (change condition)
  * 7. search result page
  * 8. banner auto scroll 
  * 
- * + font - noto
  */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import BannerSlider from "components/BannerSlider";
-import VideoItem from "components/common/VideoContainer";
+import VideoItem from "components/common/VideoItem";
 import Popup from "components/Popup";
 
 import Header from "components/layout/Header";
 import Footer from "components/layout/Footer";
-
+import ContentsContainer from "components/layout/ContentsContainer";
 import SearchFrom from "components/layout/SearchForm";
 
-import { IconMore } from "components/icon/Icons";
 import { contentsCategories as category } from "tools/constants";
 
 const PageHome = () => {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [popupShutDown, setPopupshutDown] = useState(false);
+
   const navigate = useNavigate();
 
   const navigateToPage = (link) => {
@@ -92,7 +90,6 @@ const PageHome = () => {
     }
   }, [])
 
-
   return <>
     <div className="view home">
       <Header>
@@ -106,9 +103,7 @@ const PageHome = () => {
               </li>
               {
                 category.map((item, index) => {
-                  return <li key={index}
-                    className={"category-item"}
-                  >
+                  return <li key={index} className={"category-item"}>
                     <button className="btn category-text">{item}</button>
                   </li>
                 })
@@ -136,6 +131,9 @@ const PageHome = () => {
               </li>
               <li className="content-item">
                 <VideoItem />
+              </li>
+              <li className="content-item">
+                <VideoItem isView={true} />
               </li>
             </ul>
           </div>
@@ -186,29 +184,3 @@ const PageHome = () => {
 }
 
 export default PageHome;
-
-const ContentsContainer = ({ children, index }) => {
-  return <section
-    id={`contentContainer${index}`}
-    className="contents-container"
-  >
-    <div className="contents-wrap">
-      <div
-        className="category-item category-index focus"
-        data-index={index}
-      >
-        <h3 className="category-text">{category[index]}</h3>
-      </div>
-      {children}
-      <div className="btn-more-wrap">
-        <button className="btn-more">
-          <span className="more-text">{"전 세계를 열광시킬 모두의 시상식! 다시 음악을 만나는 날, 당신의 아티스트를 확인하세요."}</span>
-          <strong className="more-title">
-            {"더 둘러보기"}
-            <IconMore />
-          </strong>
-        </button>
-      </div>
-    </div>
-  </section>
-}
