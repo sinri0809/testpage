@@ -92,6 +92,7 @@ nav,
 output,
 ruby,
 section,
+select,
 summary,
 time,
 mark,
@@ -119,10 +120,24 @@ body {
 
     &[type="checkbox"] {
       appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       border-radius: 3px;
       // border: 1px solid #D8D8D8;
       // background-color: white;
       transition: all 0.3s;
+    }
+  }
+
+  select {
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    option {
+      appearance: none;
+
     }
   }
 

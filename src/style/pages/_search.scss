@@ -80,6 +80,24 @@
     .result-sort {
       flex: 1 1 auto;
       text-align: right;
+
+      .result-sort-select {
+        text-align: center;
+        height: 32px;
+        width: 56px;
+        color: #505050;
+        border: 2px solid #ABABAB;
+        font-size: 14px;
+
+        div {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        option {
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -109,5 +127,9 @@
 
   .video-title {
     font-size: 14px;
+
+    b {
+      color: $purple;
+    }
   }
 }
