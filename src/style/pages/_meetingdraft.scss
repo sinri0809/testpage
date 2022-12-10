@@ -1,1 +1,97 @@
-.meeting-draft {}
+.meeting-draft {
+  position: relative;
+  margin-top: $header_height;
+  padding-top: 100px;
+  width: 100%;
+  height: calc(100vh - $header_height);
+  overflow: hidden;
+
+  .aside {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: whitesmoke;
+    transition: right 0.2s;
+    z-index: $level_1;
+
+    .btn-aside {
+      width: 100px;
+      height: 50px;
+      background-color: aquamarine;
+      position: absolute;
+      left: -100px;
+    }
+  }
+
+  .aside.close {
+    right: -300px;
+  }
+
+  hr {
+    height: 100px;
+    background-color: bisque;
+  }
+}
+
+.meeting-draft {
+  .video-list-container {
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .video-list {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+
+    &.vertical {
+      flex-wrap: wrap;
+      // justify-content: center;
+    }
+  }
+
+  .video-item {
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 45%;
+      top: 45%;
+      color: pink;
+    }
+  }
+
+  .video-wrap {
+    width: 400px;
+    height: 200px;
+    background-color: rgb(83, 83, 83);
+    border-radius: 10px;
+    overflow: hidden;
+
+    .video {
+      object-fit: contain;
+    }
+  }
+
+  // .video-item.more-infor {
+  //   &.horizontal {
+  //     position: absolute;
+  //     right: 0;
+  //     top: 0;
+  //   }
+  // }
+
+  .video-item.more-infor {
+    .video-wrap {
+      color: white;
+      background-color: orange;
+    }
+  }
+}

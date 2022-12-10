@@ -6,6 +6,7 @@
   width: 100vw;
   height: $header_height;
   background-color: gainsboro;
+  z-index: $level_max;
 }
 
 .header {
